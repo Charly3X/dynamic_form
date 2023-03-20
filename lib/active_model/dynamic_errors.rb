@@ -13,7 +13,10 @@ module ActiveModel
     def full_messages
       full_messages = []
 
-      each do |attribute, messages|
+      each do |error|
+        attribute = error.attribute
+        messages = error.message
+
         messages = Array.wrap(messages)
         next if messages.empty?
 
